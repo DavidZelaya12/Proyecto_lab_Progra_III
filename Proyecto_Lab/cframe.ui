@@ -43,7 +43,7 @@
        <string>Laboratorio Solicitado</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="lab">
+     <widget class="QComboBox" name="laboratorio">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -503,7 +503,7 @@
        <string>Hora de finalizacion de la reservacion</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="hora_inicio_2">
+     <widget class="QComboBox" name="hora_final">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -558,7 +558,7 @@
        </property>
       </item>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="reservar">
       <property name="geometry">
        <rect>
         <x>370</x>
@@ -569,6 +569,16 @@
       </property>
       <property name="text">
        <string>Reservar</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="mostrar">
+      <property name="geometry">
+       <rect>
+        <x>630</x>
+        <y>290</y>
+        <width>411</width>
+        <height>211</height>
+       </rect>
       </property>
      </widget>
     </widget>

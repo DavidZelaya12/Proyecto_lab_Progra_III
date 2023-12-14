@@ -13,3 +13,12 @@ Cframe::~Cframe()
     delete ui;
 }
 
+
+void Cframe::on_reservar_clicked()
+{
+
+
+
+
+}
+

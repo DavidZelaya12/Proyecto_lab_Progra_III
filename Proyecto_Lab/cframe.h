@@ -2,6 +2,9 @@
 #define CFRAME_H
 
 #include <QMainWindow>
+#include <lista.h>
+#include <laboratorio.h>
+#include <lista.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Cframe; }
@@ -15,7 +18,12 @@ public:
     Cframe(QWidget *parent = nullptr);
     ~Cframe();
 
+private slots:
+    void on_reservar_clicked();
+
 private:
+
+  //  lista <laboratorio*> lab;
     Ui::Cframe *ui;
 };
 #endif // CFRAME_H
