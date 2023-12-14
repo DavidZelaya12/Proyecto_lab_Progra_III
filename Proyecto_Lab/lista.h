@@ -150,7 +150,21 @@ bool lista<tipo>::Guardar(std::string Nombre)
             {
                 if (typeid(*actPtr->dato) == typeid(laboratorio))
                 {
-                    Archivo << dynamic_cast<laboratorio *>(actPtr->dato)->getLabSolicitado() << "\t"
+                    Archivo << "Laboratorio Solicitado \t"
+                            << "Clase Requerida\t"
+                            << "Motivo de Uso\t"
+                            << "Perfil\t"
+                            << "Repetir\t"
+                            << "Nombre Completo\t"
+                            << "Numero de Cuenta\t"
+                            << "Correo\t"
+                            << "Cantidad de Integrantes\t"
+                            << "Nombres y Numeros de Cuentas\t"
+                            << "Equipo\t"
+                            << "Fecha\t"
+                            << "Horario de Inicio\t"
+                            << "Horario de Fin\n"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getLabSolicitado() << "\t"
                             << dynamic_cast<laboratorio *>(actPtr->dato)->getClaseRequerida() << "\t"
                             << dynamic_cast<laboratorio *>(actPtr->dato)->getMotivoDeUso() << "\t"
                             << dynamic_cast<laboratorio *>(actPtr->dato)->getPerfil() << "\t"
