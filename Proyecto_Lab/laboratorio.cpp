@@ -1,92 +1,76 @@
 #include "laboratorio.h"
 
-const string &laboratorio::getLabSolicitado() const
+string laboratorio::getLabSolicitado()
 {
     return labSolicitado;
 }
 
-const string &laboratorio::getClaseRequerida() const
+string laboratorio::getClaseRequerida()
 {
     return claseRequerida;
 }
 
-const string &laboratorio::getMotivoDeUso() const
+string laboratorio::getMotivoDeUso()
 {
     return motivoDeUso;
 }
 
-const string &laboratorio::getPerfil() const
+string laboratorio::getPerfil()
 {
     return perfil;
 }
 
-const string &laboratorio::getRepeticion() const
+string laboratorio::getRepeticion()
 {
     return repeticion;
 }
 
-const string &laboratorio::getNombreCompleto() const
+string laboratorio::getNombreCompleto()
 {
     return nombreCompleto;
 }
 
-const string &laboratorio::getNumeroDeCuenta() const
+string laboratorio::getNumeroDeCuenta()
 {
     return numeroDeCuenta;
 }
 
-const string &laboratorio::getCorreo() const
+string laboratorio::getCorreo()
 {
     return correo;
 }
 
-int laboratorio::getCantIntegrantes() const
+int laboratorio::getCantIntegrantes()
 {
     return cantIntegrantes;
 }
 
-const string &laboratorio::getNombresYNumerosExtra() const
+string laboratorio::getNombresYNumerosExtra()
 {
     return nombresYNumerosExtra;
 }
 
-const string &laboratorio::getEquipo() const
+string laboratorio::getEquipo()
 {
     return equipo;
 }
 
-const string &laboratorio::getFecha() const
+string laboratorio::getFecha()
 {
     return fecha;
 }
 
-const string &laboratorio::getHorarioInicio() const
+string laboratorio::getHorarioInicio()
 {
     return horarioInicio;
 }
 
-const string &laboratorio::getHorarioFin() const
+string laboratorio::getHorarioFin()
 {
     return horarioFin;
 }
 
-laboratorio::laboratorio()
-{
-    labSolicitado = "";
-    claseRequerida = "";
-    motivoDeUso = "";
-    perfil = "";
-    repeticion = "";
-    nombreCompleto = "";
-    numeroDeCuenta = "";
-    correo = "";
-    cantIntegrantes = 0;
-    nombresYNumerosExtra = "";
-    equipo = "";
-    fecha = "";
-    horarioInicio = "";
-    horarioFin = "";
-}
+
 
 laboratorio::laboratorio(std::string labSolicitado, std::string claseRequerida, std::string motivoDeUso, std::string perfil, std::string repeticion, std::string nombreCompleto, std::string numeroDeCuenta, std::string correo, int cantIntegrantes, std::string nombresYNumerosExtra, std::string equipo, std::string fecha, std::string horarioInicio, std::string horarioFin)
 {
