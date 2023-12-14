@@ -43,7 +43,7 @@
        <string>Laboratorio Solicitado</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="laboratorio">
+     <widget class="QComboBox" name="tipolaboratorio">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -197,16 +197,6 @@
       </property>
       <property name="text">
        <string>Motivo de uso del laboratorio</string>
-      </property>
-     </widget>
-     <widget class="QPlainTextEdit" name="plainTextEdit">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>150</y>
-        <width>281</width>
-        <height>71</height>
-       </rect>
       </property>
      </widget>
      <widget class="QRadioButton" name="docente">
@@ -386,16 +376,6 @@
        <string>Cantidad de integrantes de grupo</string>
       </property>
      </widget>
-     <widget class="QPlainTextEdit" name="cuentas">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>520</y>
-        <width>281</width>
-        <height>71</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
@@ -425,8 +405,8 @@
      <widget class="QComboBox" name="hora_inicio">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>150</y>
+        <x>320</x>
+        <y>280</y>
         <width>231</width>
         <height>24</height>
        </rect>
@@ -480,8 +460,8 @@
      <widget class="QLabel" name="label_11">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>120</y>
+        <x>320</x>
+        <y>250</y>
         <width>221</width>
         <height>16</height>
        </rect>
@@ -493,8 +473,8 @@
      <widget class="QLabel" name="label_12">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>200</y>
+        <x>320</x>
+        <y>330</y>
         <width>241</width>
         <height>16</height>
        </rect>
@@ -506,8 +486,8 @@
      <widget class="QComboBox" name="hora_final">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>240</y>
+        <x>320</x>
+        <y>370</y>
         <width>231</width>
         <height>24</height>
        </rect>
@@ -561,8 +541,8 @@
      <widget class="QPushButton" name="reservar">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>330</y>
+        <x>350</x>
+        <y>460</y>
         <width>171</width>
         <height>71</height>
        </rect>
@@ -578,6 +558,49 @@
         <y>290</y>
         <width>411</width>
         <height>211</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="motivo">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>160</y>
+        <width>281</width>
+        <height>61</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_25">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>50</y>
+        <width>291</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Herramientas a usar</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="cuentas">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>520</y>
+        <width>271</width>
+        <height>71</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="herramientas">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>70</y>
+        <width>281</width>
+        <height>81</height>
        </rect>
       </property>
      </widget>

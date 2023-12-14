@@ -17,7 +17,6 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
-#include <QtWidgets/QPlainTextEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QSpinBox>
@@ -35,12 +34,11 @@ public:
     QTabWidget *tabWidget;
     QWidget *tab;
     QLabel *label;
-    QComboBox *laboratorio;
+    QComboBox *tipolaboratorio;
     QDateEdit *dateEdit;
     QLabel *label_2;
     QLineEdit *clase;
     QLabel *label_3;
-    QPlainTextEdit *plainTextEdit;
     QRadioButton *docente;
     QRadioButton *alumno;
     QRadioButton *educacion;
@@ -55,7 +53,6 @@ public:
     QLabel *label_7;
     QSpinBox *integrantes;
     QLabel *label_8;
-    QPlainTextEdit *cuentas;
     QLabel *label_9;
     QLabel *label_10;
     QComboBox *hora_inicio;
@@ -64,6 +61,10 @@ public:
     QComboBox *hora_final;
     QPushButton *reservar;
     QTextEdit *mostrar;
+    QLineEdit *motivo;
+    QLabel *label_25;
+    QLineEdit *cuentas;
+    QLineEdit *herramientas;
     QWidget *tab_2;
     QMenuBar *menubar;
     QStatusBar *statusbar;
@@ -83,29 +84,29 @@ public:
         label = new QLabel(tab);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 20, 221, 16));
-        laboratorio = new QComboBox(tab);
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->addItem(QString());
-        laboratorio->setObjectName(QString::fromUtf8("laboratorio"));
-        laboratorio->setGeometry(QRect(10, 40, 281, 24));
+        tipolaboratorio = new QComboBox(tab);
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->addItem(QString());
+        tipolaboratorio->setObjectName(QString::fromUtf8("tipolaboratorio"));
+        tipolaboratorio->setGeometry(QRect(10, 40, 281, 24));
         dateEdit = new QDateEdit(tab);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
         dateEdit->setGeometry(QRect(10, 620, 110, 25));
@@ -118,9 +119,6 @@ public:
         label_3 = new QLabel(tab);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(10, 130, 291, 16));
-        plainTextEdit = new QPlainTextEdit(tab);
-        plainTextEdit->setObjectName(QString::fromUtf8("plainTextEdit"));
-        plainTextEdit->setGeometry(QRect(10, 150, 281, 71));
         docente = new QRadioButton(tab);
         docente->setObjectName(QString::fromUtf8("docente"));
         docente->setGeometry(QRect(400, 10, 97, 22));
@@ -165,9 +163,6 @@ public:
         label_8 = new QLabel(tab);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setGeometry(QRect(10, 440, 291, 16));
-        cuentas = new QPlainTextEdit(tab);
-        cuentas->setObjectName(QString::fromUtf8("cuentas"));
-        cuentas->setGeometry(QRect(10, 520, 281, 71));
         label_9 = new QLabel(tab);
         label_9->setObjectName(QString::fromUtf8("label_9"));
         label_9->setGeometry(QRect(10, 500, 291, 16));
@@ -185,13 +180,13 @@ public:
         hora_inicio->addItem(QString());
         hora_inicio->addItem(QString());
         hora_inicio->setObjectName(QString::fromUtf8("hora_inicio"));
-        hora_inicio->setGeometry(QRect(340, 150, 231, 24));
+        hora_inicio->setGeometry(QRect(320, 280, 231, 24));
         label_11 = new QLabel(tab);
         label_11->setObjectName(QString::fromUtf8("label_11"));
-        label_11->setGeometry(QRect(340, 120, 221, 16));
+        label_11->setGeometry(QRect(320, 250, 221, 16));
         label_12 = new QLabel(tab);
         label_12->setObjectName(QString::fromUtf8("label_12"));
-        label_12->setGeometry(QRect(340, 200, 241, 16));
+        label_12->setGeometry(QRect(320, 330, 241, 16));
         hora_final = new QComboBox(tab);
         hora_final->addItem(QString());
         hora_final->addItem(QString());
@@ -203,13 +198,25 @@ public:
         hora_final->addItem(QString());
         hora_final->addItem(QString());
         hora_final->setObjectName(QString::fromUtf8("hora_final"));
-        hora_final->setGeometry(QRect(340, 240, 231, 24));
+        hora_final->setGeometry(QRect(320, 370, 231, 24));
         reservar = new QPushButton(tab);
         reservar->setObjectName(QString::fromUtf8("reservar"));
-        reservar->setGeometry(QRect(370, 330, 171, 71));
+        reservar->setGeometry(QRect(350, 460, 171, 71));
         mostrar = new QTextEdit(tab);
         mostrar->setObjectName(QString::fromUtf8("mostrar"));
         mostrar->setGeometry(QRect(630, 290, 411, 211));
+        motivo = new QLineEdit(tab);
+        motivo->setObjectName(QString::fromUtf8("motivo"));
+        motivo->setGeometry(QRect(10, 160, 281, 61));
+        label_25 = new QLabel(tab);
+        label_25->setObjectName(QString::fromUtf8("label_25"));
+        label_25->setGeometry(QRect(310, 50, 291, 16));
+        cuentas = new QLineEdit(tab);
+        cuentas->setObjectName(QString::fromUtf8("cuentas"));
+        cuentas->setGeometry(QRect(10, 520, 271, 71));
+        herramientas = new QLineEdit(tab);
+        herramientas->setObjectName(QString::fromUtf8("herramientas"));
+        herramientas->setGeometry(QRect(310, 70, 281, 81));
         tabWidget->addTab(tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QString::fromUtf8("tab_2"));
@@ -235,26 +242,26 @@ public:
     {
         Cframe->setWindowTitle(QApplication::translate("Cframe", "Cframe", nullptr));
         label->setText(QApplication::translate("Cframe", "Laboratorio Solicitado", nullptr));
-        laboratorio->setItemText(0, QApplication::translate("Cframe", "Laboratorio computo #1", nullptr));
-        laboratorio->setItemText(1, QApplication::translate("Cframe", "Laboratorio computo #5 ", nullptr));
-        laboratorio->setItemText(2, QApplication::translate("Cframe", "Laboratorio de Fisica", nullptr));
-        laboratorio->setItemText(3, QApplication::translate("Cframe", "Laboratorio de maquinas y herramientas ", nullptr));
-        laboratorio->setItemText(4, QApplication::translate("Cframe", "Laboratorio de electronica ", nullptr));
-        laboratorio->setItemText(5, QApplication::translate("Cframe", "Laboratorio de mecatronica ", nullptr));
-        laboratorio->setItemText(6, QApplication::translate("Cframe", "Laboratorio de biomedica", nullptr));
-        laboratorio->setItemText(7, QApplication::translate("Cframe", "Laboratorio de energia", nullptr));
-        laboratorio->setItemText(8, QApplication::translate("Cframe", "Laboratorio de industrial", nullptr));
-        laboratorio->setItemText(9, QApplication::translate("Cframe", "Laboratorio de civil", nullptr));
-        laboratorio->setItemText(10, QApplication::translate("Cframe", "Laboratorio de redes", nullptr));
-        laboratorio->setItemText(11, QApplication::translate("Cframe", "Laboratorio de quimica", nullptr));
-        laboratorio->setItemText(12, QApplication::translate("Cframe", "Laboratorio de software", nullptr));
-        laboratorio->setItemText(13, QApplication::translate("Cframe", "Laboratorio de telecomunicaciones", nullptr));
-        laboratorio->setItemText(14, QApplication::translate("Cframe", "Laboratorio de automatizacion", nullptr));
-        laboratorio->setItemText(15, QApplication::translate("Cframe", "Laboratorio de computo #2", nullptr));
-        laboratorio->setItemText(16, QApplication::translate("Cframe", "Laboratorio de computo #3", nullptr));
-        laboratorio->setItemText(17, QApplication::translate("Cframe", "Laboratorio de computo #4", nullptr));
-        laboratorio->setItemText(18, QApplication::translate("Cframe", "Laboratorio de inteligencia artificial", nullptr));
-        laboratorio->setItemText(19, QString());
+        tipolaboratorio->setItemText(0, QApplication::translate("Cframe", "Laboratorio computo #1", nullptr));
+        tipolaboratorio->setItemText(1, QApplication::translate("Cframe", "Laboratorio computo #5 ", nullptr));
+        tipolaboratorio->setItemText(2, QApplication::translate("Cframe", "Laboratorio de Fisica", nullptr));
+        tipolaboratorio->setItemText(3, QApplication::translate("Cframe", "Laboratorio de maquinas y herramientas ", nullptr));
+        tipolaboratorio->setItemText(4, QApplication::translate("Cframe", "Laboratorio de electronica ", nullptr));
+        tipolaboratorio->setItemText(5, QApplication::translate("Cframe", "Laboratorio de mecatronica ", nullptr));
+        tipolaboratorio->setItemText(6, QApplication::translate("Cframe", "Laboratorio de biomedica", nullptr));
+        tipolaboratorio->setItemText(7, QApplication::translate("Cframe", "Laboratorio de energia", nullptr));
+        tipolaboratorio->setItemText(8, QApplication::translate("Cframe", "Laboratorio de industrial", nullptr));
+        tipolaboratorio->setItemText(9, QApplication::translate("Cframe", "Laboratorio de civil", nullptr));
+        tipolaboratorio->setItemText(10, QApplication::translate("Cframe", "Laboratorio de redes", nullptr));
+        tipolaboratorio->setItemText(11, QApplication::translate("Cframe", "Laboratorio de quimica", nullptr));
+        tipolaboratorio->setItemText(12, QApplication::translate("Cframe", "Laboratorio de software", nullptr));
+        tipolaboratorio->setItemText(13, QApplication::translate("Cframe", "Laboratorio de telecomunicaciones", nullptr));
+        tipolaboratorio->setItemText(14, QApplication::translate("Cframe", "Laboratorio de automatizacion", nullptr));
+        tipolaboratorio->setItemText(15, QApplication::translate("Cframe", "Laboratorio de computo #2", nullptr));
+        tipolaboratorio->setItemText(16, QApplication::translate("Cframe", "Laboratorio de computo #3", nullptr));
+        tipolaboratorio->setItemText(17, QApplication::translate("Cframe", "Laboratorio de computo #4", nullptr));
+        tipolaboratorio->setItemText(18, QApplication::translate("Cframe", "Laboratorio de inteligencia artificial", nullptr));
+        tipolaboratorio->setItemText(19, QString());
 
         label_2->setText(QApplication::translate("Cframe", "Clase para la cual requiere el uso del laboratorio", nullptr));
         label_3->setText(QApplication::translate("Cframe", "Motivo de uso del laboratorio", nullptr));
@@ -295,6 +302,7 @@ public:
         hora_final->setItemText(8, QApplication::translate("Cframe", "20  : 00", nullptr));
 
         reservar->setText(QApplication::translate("Cframe", "Reservar", nullptr));
+        label_25->setText(QApplication::translate("Cframe", "Herramientas a usar", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Cframe", "Tab 1", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Cframe", "Tab 2", nullptr));
     } // retranslateUi

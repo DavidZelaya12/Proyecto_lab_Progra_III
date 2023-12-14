@@ -1,7 +1,7 @@
 #ifndef LABORATORIO_H
 #define LABORATORIO_H
 #include <iostream>
-
+#include <QDateEdit>
 using std::string;
 
 class laboratorio
