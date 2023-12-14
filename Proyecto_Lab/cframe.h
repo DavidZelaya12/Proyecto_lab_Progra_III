@@ -23,7 +23,7 @@ private slots:
 
 private:
 
-  //  lista <laboratorio*> lab;
+    lista <laboratorio*> labs;
     Ui::Cframe *ui;
 };
 #endif // CFRAME_H

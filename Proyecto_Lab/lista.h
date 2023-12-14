@@ -4,17 +4,18 @@
 #include <QMainWindow>
 #include <QMessageBox>
 #include <QInputDialog>
-#include <laboratorio.h>
+#include <nodo.h>
+
 using std::ofstream;
 using std::ios;
 using std::string;
 
 template<typename tipo>
-class lista : public QMainWindow {
-    friend class laboratorio<tipo>;
+class lista:public QMainWindow{
+    friend class cframe;
 private:
-    laboratorio<tipo> *raizPtr;
-    laboratorio<tipo> *NuevoNodo( const tipo & );
+    nodo<tipo> *raizPtr;
+    nodo<tipo> *NuevoNodo( const tipo & );
     int Cant;
 
 public:
@@ -32,9 +33,9 @@ public:
 };
 
 template<typename tipo>
-laboratorio<tipo> *lista<tipo>::NuevoNodo(const tipo &dato)
+nodo<tipo> *lista<tipo>::NuevoNodo(const tipo &dato)
 {
-    return new laboratorio<tipo>(dato);
+    return new nodo<tipo>(dato);
 }
 
 template<typename tipo>
@@ -45,8 +46,8 @@ lista<tipo>::~lista()
 {
     if ( !Vacia() ){
         std::cout << "Destruyendo nodos ...\n";
-        laboratorio< tipo > *actPtr = raizPtr;
-        laboratorio< tipo > *tempPtr;
+        nodo< tipo > *actPtr = raizPtr;
+        nodo< tipo > *tempPtr;
 
         for ( ; actPtr != 0; ){
             tempPtr = actPtr;
@@ -62,7 +63,7 @@ lista<tipo>::~lista()
 template<typename tipo>
 void lista<tipo>::InsertarAlInicio(const tipo &dato)
 {
-    laboratorio< tipo > *nuevoPtr = NuevoNodo( dato ); // nuevo nodo
+    nodo< tipo > *nuevoPtr = NuevoNodo( dato ); // nuevo nodo
 
     if ( Vacia() ){ // la Lista está vacía
         raizPtr = nuevoPtr; // la nueva lista sólo tiene un nodo
@@ -76,8 +77,8 @@ void lista<tipo>::InsertarAlInicio(const tipo &dato)
 template<typename tipo>
 void lista<tipo>::InsertarAlFinal(const tipo &dato)
 {
-    laboratorio< tipo > *nuevoPtr = NuevoNodo( dato ); // nuevo nodo
-    laboratorio< tipo > *actPtr = raizPtr;
+    nodo< tipo > *nuevoPtr = NuevoNodo( dato ); // nuevo nodo
+    nodo< tipo > *actPtr = raizPtr;
     if ( Vacia() ){ // la Lista está vacía
         raizPtr = nuevoPtr; // la nueva lista sólo tiene un nodo
     }else{
@@ -94,7 +95,7 @@ bool lista<tipo>::EliminarDelInicio(tipo &dato)
     if ( Vacia() ){ // la Lista está vacía
         return false; // la eliminación no tuvo éxito
     }else{
-        laboratorio< tipo > *tempPtr = raizPtr; // contiene tempPtr a eliminar
+        nodo< tipo > *tempPtr = raizPtr; // contiene tempPtr a eliminar
         raizPtr = raizPtr->SigPtr; // apunta al nodo que antes era el segundo
         dato = tempPtr->dato; // devuelve los datos que se van a eliminar
         delete tempPtr; // reclama el nodo que antes era el primero
@@ -109,11 +110,11 @@ bool lista<tipo>::EliminarDelFinal(tipo &dato)
     if ( Vacia() ){ // la Lista está vacía
         return false; // la eliminación no tuvo éxito
     }else{
-        laboratorio< tipo > *tempPtr = raizPtr; // contiene tempPtr a eliminar
+        nodo< tipo > *tempPtr = raizPtr; // contiene tempPtr a eliminar
         if ( raizPtr->SigPtr == 0 ){ // la Lista tiene un elemento
             raizPtr = 0; // no hay nodos después de la eliminación
         }else{
-            laboratorio< tipo > *actPtr = raizPtr;
+            nodo< tipo > *actPtr = raizPtr;
 
             for ( ;actPtr->SigPtr->SigPtr != 0; actPtr = actPtr->SigPtr );
 

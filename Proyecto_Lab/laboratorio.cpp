@@ -104,7 +104,6 @@ laboratorio::laboratorio(std::string labSolicitado, std::string claseRequerida, 
     this->fecha = fecha;
     this->horarioInicio = horarioInicio;
     this->horarioFin = horarioFin;
-    this->next = nullptr;
 }
 
 laboratorio::~laboratorio()
