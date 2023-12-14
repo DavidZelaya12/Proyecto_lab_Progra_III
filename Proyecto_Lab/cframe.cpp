@@ -24,6 +24,6 @@ laboratorio *nuevolab =new laboratorio(ui->tipolaboratorio->currentText().toStdS
                                        ui->hora_final->currentText().toStdString());
 
 labs.InsertarAlFinal(nuevolab);
-
+labs.Guardar("DatosLaboratorios.xls");
 }
 

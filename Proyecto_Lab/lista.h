@@ -5,6 +5,7 @@
 #include <QMessageBox>
 #include <QInputDialog>
 #include <nodo.h>
+#include <laboratorio.h>
 
 using std::ofstream;
 using std::ios;
@@ -133,6 +134,41 @@ template<typename tipo>
 bool lista<tipo>::Vacia()
 {
     return raizPtr==0;
+}
+
+template<typename tipo>
+bool lista<tipo>::Guardar(std::string Nombre)
+{
+    std::ofstream Archivo(Nombre.data(), std::ios::out | std::ios::app);
+        if (!Archivo)
+        {
+            return false;
+        }
+        else
+        {
+            for (nodo<tipo> *actPtr = raizPtr; actPtr != 0; actPtr = actPtr->SigPtr)
+            {
+                if (typeid(*actPtr->dato) == typeid(laboratorio))
+                {
+                    Archivo << dynamic_cast<laboratorio *>(actPtr->dato)->getLabSolicitado() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getClaseRequerida() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getMotivoDeUso() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getPerfil() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getRepeticion() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getNombreCompleto() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getNumeroDeCuenta() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getCorreo() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getCantIntegrantes() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getNombresYNumerosExtra() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getEquipo() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getFecha() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getHorarioInicio() << "\t"
+                            << dynamic_cast<laboratorio *>(actPtr->dato)->getHorarioFin() << "\n";
+                }
+            }
+            Archivo.close();
+            return true;
+        }
 }
 
 
