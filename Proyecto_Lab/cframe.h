@@ -24,6 +24,14 @@ private slots:
 private:
 
     lista <laboratorio*> labs;
+    nodo<laboratorio*> *raizPtr;
+
+    int indexActual(string posicion);
+    string horasdisponibles[9] = {"06:45", "08:10", "09:55", "11:15", "13:20", "14:40", "16:00", "17:20", "18:40"};
+
+    bool validarFecha(string laboratorioo,int index1, int index2,string fecha);
+
+
     Ui::Cframe *ui;
 };
 #endif // CFRAME_H
