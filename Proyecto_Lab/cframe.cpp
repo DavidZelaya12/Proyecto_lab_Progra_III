@@ -20,10 +20,35 @@ Cframe::~Cframe()
 void Cframe::on_reservar_clicked()
 {
 
-    laboratorio *nuevolab =new laboratorio(ui->tipolaboratorio->currentText().toStdString(),ui->clase->text().toStdString(),ui->motivo->text().toStdString(),
-                                           "docente",ui->comboBox->currentText().toStdString(),ui->nombre->text().toStdString(),ui->cuenta->text().toStdString(),
-                                           ui->correo->text().toStdString(),5,ui->cuentas->text().toStdString(),
-                                           ui->herramientas->text().toStdString(),ui->dateEdit->date().toString().toStdString(),ui->hora_inicio->currentText().toStdString(),
+    int integrantes = ui->integrantes->value();
+    string perfil;
+    if(ui->administrativo->isChecked()){
+        perfil ="Administrativo";
+    }else if(ui->alumno->isChecked()){
+        perfil = "Alumno";
+    }else if(ui->docente->isChecked()){
+        perfil = "Docente";
+    }
+    else{
+        perfil = "Educacion continua";
+    }
+
+
+
+
+    laboratorio *nuevolab =new laboratorio(ui->tipolaboratorio->currentText().toStdString(),
+                                           ui->clase->text().toStdString(),
+                                           ui->motivo->text().toStdString(),
+                                           perfil,
+                                           ui->comboBox->currentText().toStdString(),
+                                           ui->nombre->text().toStdString(),
+                                           ui->cuenta->text().toStdString(),
+                                           ui->correo->text().toStdString(),
+                                           integrantes,
+                                           ui->cuentas->text().toStdString(),
+                                           ui->herramientas->text().toStdString(),
+                                           ui->dateEdit->date().toString().toStdString(),
+                                           ui->hora_inicio->currentText().toStdString(),
                                            ui->hora_final->currentText().toStdString());
 
     if(validarFecha(nuevolab->getLabSolicitado(),
@@ -32,7 +57,6 @@ void Cframe::on_reservar_clicked()
                     ui->dateEdit->date().toString().toStdString())){
 
         labs.InsertarAlFinal(nuevolab);
-        //labs.Guardar("DatosLaboratorios.xls");
     }
 
 }
@@ -52,22 +76,24 @@ int Cframe::indexActual(string posicion)
 
 bool Cframe::validarFecha(string laboratorioo,int index1, int index2,string fecha)
 {
+
     int currentindex1 = ui->hora_inicio->currentIndex();
-        int currentindex2 = ui->hora_final->currentIndex();
+    int currentindex2 = ui->hora_final->currentIndex();
 
-        if(currentindex1>currentindex2){
-            QMessageBox::information(nullptr, "Error", "Ingrese una fecha valida");
-            return false;
-                }
+    if(currentindex1>currentindex2){
+        QMessageBox::information(nullptr, "Error", "Ingrese una fecha valida");
+        return false;
+    }
 
-        raizPtr = labs.raizPtr;
+    raizPtr = labs.raizPtr;
 
-        for (;
-             raizPtr != 0 && raizPtr->getDato()->getLabSolicitado() == laboratorioo && raizPtr->getDato()->getFecha() == fecha
-             ; ) {
+    for (;
+         raizPtr != nullptr
+         ;raizPtr= raizPtr->SigPtr ) {
 
-           std::cout << laboratorioo;
-
+        //QMessageBox::information(nullptr, "Error", "Yo Creo que este for no se está eejecutando");
+        std::cout << laboratorioo;
+        if( raizPtr->getDato()->getLabSolicitado() == laboratorioo && raizPtr->getDato()->getFecha() == fecha){
             int inicio = indexActual(raizPtr->getDato()->getHorarioInicio());
             int final  = indexActual(raizPtr->getDato()->getHorarioFin());
 
@@ -82,11 +108,17 @@ bool Cframe::validarFecha(string laboratorioo,int index1, int index2,string fech
                 QMessageBox::information(nullptr, "Error", "Fecha ocupada");
                 return false;
             }
-        raizPtr= raizPtr->SigPtr;
-
         }
 
-            return true;
+    }
+
+    return true;
+
+}
+
+
+void Cframe::on_tipolaboratorio_currentIndexChanged(const QString &arg1)
+{
 
 }
 

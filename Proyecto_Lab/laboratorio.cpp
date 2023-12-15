@@ -70,6 +70,11 @@ string laboratorio::getHorarioFin()
     return horarioFin;
 }
 
+string laboratorio::getReserva()
+{
+    return labSolicitado+" "+horarioInicio+"-"+horarioFin;
+}
+
 
 
 laboratorio::laboratorio(std::string labSolicitado, std::string claseRequerida, std::string motivoDeUso, std::string perfil, std::string repeticion, std::string nombreCompleto, std::string numeroDeCuenta, std::string correo, int cantIntegrantes, std::string nombresYNumerosExtra, std::string equipo, std::string fecha, std::string horarioInicio, std::string horarioFin)

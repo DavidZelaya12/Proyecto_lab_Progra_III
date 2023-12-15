@@ -43,6 +43,8 @@ public:
     string getFecha() ;
     string getHorarioInicio() ;
     string getHorarioFin() ;
+
+    string getReserva();
 };
 
 #endif // LABORATORIO_H
