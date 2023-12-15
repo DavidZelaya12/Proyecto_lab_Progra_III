@@ -27,10 +27,10 @@ private:
 
     lista <laboratorio*> labs;
     nodo<laboratorio*> *raizPtr;
-    int indexActual(string posicion);
-    string horasdisp[9] = {"06 : 45", "08 : 10", "09 : 55", "11 : 15", "13 : 20", "14 : 40", "16 : 00", "17 : 20", "18 : 40"};
-    bool validarFecha(string laboratorioo,int startindex, int endindex,string fecha);
 
+    int indexActual(string posicion);
+    bool validarFecha(string laboratorioo,int startindex, int endindex,string fecha);
+    bool cargarlista(string Gracia);
 
     Ui::Cframe *ui;
 };

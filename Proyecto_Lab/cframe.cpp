@@ -9,10 +9,12 @@ Cframe::Cframe(QWidget *parent)
     , ui(new Ui::Cframe)
 {
     ui->setupUi(this);
+    cargarlista("DatosLaboratorios.xls");
 }
 
 Cframe::~Cframe()
 {
+    labs.Guardar("DatosLaboratorios.xls");
     delete ui;
 }
 
@@ -32,8 +34,6 @@ void Cframe::on_reservar_clicked()
     else{
         perfil = "Educacion continua";
     }
-
-
 
 
     laboratorio *nuevolab =new laboratorio(ui->tipolaboratorio->currentText().toStdString(),
@@ -112,6 +112,33 @@ bool Cframe::validarFecha(string laboratorioo,int index1, int index2,string fech
 
     }
 
+    return true;
+
+}
+
+bool Cframe::cargarlista(string Gracia)
+{
+    ifstream Archivo(Gracia.data(),ios::in);
+    if(!Archivo){
+        return false;
+    }else{
+        do{
+            string labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion, nombreCompleto, numeroDeCuenta, correo;
+            int cantIntegrantes;
+            string nombresYNumerosExtra, equipo, fecha, horarioInicio, horarioFin;
+
+            Archivo >> labSolicitado >> claseRequerida >> motivoDeUso >> perfil >> repeticion >> nombreCompleto
+                    >> numeroDeCuenta >> correo >> cantIntegrantes >> nombresYNumerosExtra >> equipo >> fecha
+                    >> horarioInicio >> horarioFin;
+            if (!Archivo.eof()) {
+                laboratorio *l = new laboratorio(labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion,
+                                                 nombreCompleto, numeroDeCuenta, correo, cantIntegrantes,
+                                                 nombresYNumerosExtra, equipo, fecha, horarioInicio, horarioFin);
+            labs.InsertarAlFinal(l);
+            }
+        }while(!Archivo.eof());
+    }
+    Archivo.close();
     return true;
 
 }
