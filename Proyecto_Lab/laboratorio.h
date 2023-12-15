@@ -40,7 +40,7 @@ public:
     int getCantIntegrantes() ;
     string getNombresYNumerosExtra() ;
     string getEquipo() ;
-    string getFecha() ;
+    const string getFecha() const;
     string getHorarioInicio() ;
     string getHorarioFin() ;
 

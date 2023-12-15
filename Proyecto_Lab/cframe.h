@@ -25,6 +25,12 @@ private slots:
 
 private:
 
+    string labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion, nombreCompleto, numeroDeCuenta, correo;
+    int cantIntegrantes;
+    string nombresYNumerosExtra, equipo, fecha, horarioInicio, horarioFin;
+
+    laboratorio *l;
+
     lista <laboratorio*> labs;
     nodo<laboratorio*> *raizPtr;
 

@@ -55,7 +55,7 @@ string laboratorio::getEquipo()
     return equipo;
 }
 
-string laboratorio::getFecha()
+const string laboratorio::getFecha()const
 {
     return fecha;
 }

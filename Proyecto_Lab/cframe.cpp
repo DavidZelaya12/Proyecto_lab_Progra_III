@@ -8,13 +8,12 @@ Cframe::Cframe(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Cframe)
 {
+   cargarlista("DatosLaboratorios.xls");
     ui->setupUi(this);
-    cargarlista("DatosLaboratorios.xls");
 }
 
 Cframe::~Cframe()
 {
-    labs.Guardar("DatosLaboratorios.xls");
     delete ui;
 }
 
@@ -36,6 +35,7 @@ void Cframe::on_reservar_clicked()
     }
 
 
+
     laboratorio *nuevolab =new laboratorio(ui->tipolaboratorio->currentText().toStdString(),
                                            ui->clase->text().toStdString(),
                                            ui->motivo->text().toStdString(),
@@ -47,16 +47,16 @@ void Cframe::on_reservar_clicked()
                                            integrantes,
                                            ui->cuentas->text().toStdString(),
                                            ui->herramientas->text().toStdString(),
-                                           ui->dateEdit->date().toString().toStdString(),
+                                           "ui->dateEdit->date().toString().toStdString()",
                                            ui->hora_inicio->currentText().toStdString(),
                                            ui->hora_final->currentText().toStdString());
 
     if(validarFecha(nuevolab->getLabSolicitado(),
                     ui->hora_inicio->currentIndex(),
                     ui->hora_final->currentIndex(),
-                    ui->dateEdit->date().toString().toStdString())){
-
+                    "ui->dateEdit->date().toString().toStdString()")){
         labs.InsertarAlFinal(nuevolab);
+        labs.Guardar("DatosLaboratorios.xls");
     }
 
 }
@@ -91,7 +91,6 @@ bool Cframe::validarFecha(string laboratorioo,int index1, int index2,string fech
          raizPtr != nullptr
          ;raizPtr= raizPtr->SigPtr ) {
 
-        //QMessageBox::information(nullptr, "Error", "Yo Creo que este for no se está eejecutando");
         std::cout << laboratorioo;
         if( raizPtr->getDato()->getLabSolicitado() == laboratorioo && raizPtr->getDato()->getFecha() == fecha){
             int inicio = indexActual(raizPtr->getDato()->getHorarioInicio());
@@ -123,19 +122,19 @@ bool Cframe::cargarlista(string Gracia)
         return false;
     }else{
         do{
-            string labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion, nombreCompleto, numeroDeCuenta, correo;
-            int cantIntegrantes;
-            string nombresYNumerosExtra, equipo, fecha, horarioInicio, horarioFin;
 
             Archivo >> labSolicitado >> claseRequerida >> motivoDeUso >> perfil >> repeticion >> nombreCompleto
                     >> numeroDeCuenta >> correo >> cantIntegrantes >> nombresYNumerosExtra >> equipo >> fecha
                     >> horarioInicio >> horarioFin;
             if (!Archivo.eof()) {
-                laboratorio *l = new laboratorio(labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion,
+                l = new laboratorio(labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion,
                                                  nombreCompleto, numeroDeCuenta, correo, cantIntegrantes,
                                                  nombresYNumerosExtra, equipo, fecha, horarioInicio, horarioFin);
             labs.InsertarAlFinal(l);
+
             }
+            QMessageBox::information(nullptr, "Error", "Yo Creo que este for no se está eejecutando");
+
         }while(!Archivo.eof());
     }
     Archivo.close();

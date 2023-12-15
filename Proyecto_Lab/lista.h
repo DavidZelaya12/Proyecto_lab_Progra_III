@@ -164,6 +164,9 @@ bool lista<tipo>::Guardar(std::string Nombre)
                             << dynamic_cast<laboratorio *>(actPtr->dato)->getFecha() << "\t"
                             << dynamic_cast<laboratorio *>(actPtr->dato)->getHorarioInicio() << "\t"
                             << dynamic_cast<laboratorio *>(actPtr->dato)->getHorarioFin() << "\n";
+
+
+
                 }
             }
             Archivo.close();
