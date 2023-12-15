@@ -9,6 +9,7 @@
 #ifndef UI_CFRAME_H
 #define UI_CFRAME_H
 
+#include <QtCore/QDate>
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
@@ -32,6 +33,8 @@ class Ui_Cframe
 public:
     QWidget *centralwidget;
     QTabWidget *tabWidget;
+    QWidget *tab_2;
+    QLabel *label_13;
     QWidget *tab;
     QLabel *label;
     QComboBox *tipolaboratorio;
@@ -60,12 +63,14 @@ public:
     QLabel *label_12;
     QComboBox *hora_final;
     QPushButton *reservar;
-    QTextEdit *mostrar;
     QLineEdit *motivo;
     QLabel *label_25;
     QLineEdit *cuentas;
     QLineEdit *herramientas;
-    QWidget *tab_2;
+    QWidget *tab_3;
+    QLabel *label_14;
+    QTextEdit *mostrar2;
+    QPushButton *pushButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -79,6 +84,12 @@ public:
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName(QString::fromUtf8("tabWidget"));
         tabWidget->setGeometry(QRect(0, 0, 1091, 731));
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QString::fromUtf8("tab_2"));
+        label_13 = new QLabel(tab_2);
+        label_13->setObjectName(QString::fromUtf8("label_13"));
+        label_13->setGeometry(QRect(20, 10, 911, 441));
+        tabWidget->addTab(tab_2, QString());
         tab = new QWidget();
         tab->setObjectName(QString::fromUtf8("tab"));
         label = new QLabel(tab);
@@ -110,6 +121,7 @@ public:
         dateEdit = new QDateEdit(tab);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
         dateEdit->setGeometry(QRect(10, 620, 110, 25));
+        dateEdit->setMinimumDate(QDate(2023, 11, 14));
         label_2 = new QLabel(tab);
         label_2->setObjectName(QString::fromUtf8("label_2"));
         label_2->setGeometry(QRect(10, 80, 291, 16));
@@ -125,6 +137,7 @@ public:
         alumno = new QRadioButton(tab);
         alumno->setObjectName(QString::fromUtf8("alumno"));
         alumno->setGeometry(QRect(290, 10, 97, 22));
+        alumno->setChecked(true);
         educacion = new QRadioButton(tab);
         educacion->setObjectName(QString::fromUtf8("educacion"));
         educacion->setGeometry(QRect(510, 10, 161, 22));
@@ -160,6 +173,8 @@ public:
         integrantes = new QSpinBox(tab);
         integrantes->setObjectName(QString::fromUtf8("integrantes"));
         integrantes->setGeometry(QRect(10, 460, 46, 25));
+        integrantes->setMinimum(1);
+        integrantes->setMaximum(35);
         label_8 = new QLabel(tab);
         label_8->setObjectName(QString::fromUtf8("label_8"));
         label_8->setGeometry(QRect(10, 440, 291, 16));
@@ -202,9 +217,6 @@ public:
         reservar = new QPushButton(tab);
         reservar->setObjectName(QString::fromUtf8("reservar"));
         reservar->setGeometry(QRect(350, 460, 171, 71));
-        mostrar = new QTextEdit(tab);
-        mostrar->setObjectName(QString::fromUtf8("mostrar"));
-        mostrar->setGeometry(QRect(630, 290, 411, 211));
         motivo = new QLineEdit(tab);
         motivo->setObjectName(QString::fromUtf8("motivo"));
         motivo->setGeometry(QRect(10, 160, 281, 61));
@@ -218,9 +230,19 @@ public:
         herramientas->setObjectName(QString::fromUtf8("herramientas"));
         herramientas->setGeometry(QRect(310, 70, 281, 81));
         tabWidget->addTab(tab, QString());
-        tab_2 = new QWidget();
-        tab_2->setObjectName(QString::fromUtf8("tab_2"));
-        tabWidget->addTab(tab_2, QString());
+        tab_3 = new QWidget();
+        tab_3->setObjectName(QString::fromUtf8("tab_3"));
+        label_14 = new QLabel(tab_3);
+        label_14->setObjectName(QString::fromUtf8("label_14"));
+        label_14->setGeometry(QRect(30, 20, 211, 16));
+        mostrar2 = new QTextEdit(tab_3);
+        mostrar2->setObjectName(QString::fromUtf8("mostrar2"));
+        mostrar2->setGeometry(QRect(30, 60, 1031, 601));
+        mostrar2->setReadOnly(true);
+        pushButton = new QPushButton(tab_3);
+        pushButton->setObjectName(QString::fromUtf8("pushButton"));
+        pushButton->setGeometry(QRect(250, 20, 131, 25));
+        tabWidget->addTab(tab_3, QString());
         Cframe->setCentralWidget(centralwidget);
         menubar = new QMenuBar(Cframe);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -232,7 +254,7 @@ public:
 
         retranslateUi(Cframe);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Cframe);
@@ -241,6 +263,27 @@ public:
     void retranslateUi(QMainWindow *Cframe)
     {
         Cframe->setWindowTitle(QApplication::translate("Cframe", "Cframe", nullptr));
+        label_13->setText(QApplication::translate("Cframe", "Este espacio virtual se utilizar\303\241 para la reservaci\303\263n de Laboratorios de la Facultad de Ingenier\303\255a. \n"
+"\n"
+"Requisitos: \n"
+" Solicitar el Laboratorios con 2 d\303\255as de anticipaci\303\263n.\n"
+" Haber cursado las clases que involucren los equipos  presentes en el laboratorio.\n"
+"Realizar la Solicitud entre 8:00 a.m. a 5:00 p.m\n"
+"\n"
+"Reglamentos: \n"
+" Mantener el orden y la limpieza del laboratorio solicitado para evitar amonestaciones verbales o escritas ( comit\303\251 de \303\251tica).\n"
+" No ingresar comidas ni bebidas a los laboratorio de lo contrario se remitir\303\241n al comit\303\251 de \303\251tica,\n"
+"No modificar, Ajustar o Cambiar cualquier parte de la m\303\241quina sin autorizacion y supervisi\303\263n de las personas encargados del laboratorio. \n"
+"Utilizar la vestimenta correcta: \n"
+"Zapatos Cerrados (De preferencia con punta de seguridad o cubos). \n"
+"Ropa no holgada o muy suelta. ( De preferencia jeans y camisas)\n"
+"Pelo recogido . \n"
+"\n"
+"Notas: \n"
+" "
+                        "\n"
+"Una vez enviado el formulario debe esperar la confirmaci\303\263n de aprobaci\303\263n de uso del laboratorio solicitado de lo contrario no puede hacer uso del laboratorio. Cualquier pregunta o problema con su reservaci\303\263n puede enviar un correo a : winder.matamoros@unitec.edu.hn", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Cframe", "Reglamentos", nullptr));
         label->setText(QApplication::translate("Cframe", "Laboratorio Solicitado", nullptr));
         tipolaboratorio->setItemText(0, QApplication::translate("Cframe", "Laboratorio computo #1", nullptr));
         tipolaboratorio->setItemText(1, QApplication::translate("Cframe", "Laboratorio computo #5 ", nullptr));
@@ -303,8 +346,10 @@ public:
 
         reservar->setText(QApplication::translate("Cframe", "Reservar", nullptr));
         label_25->setText(QApplication::translate("Cframe", "Herramientas a usar", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Cframe", "Tab 1", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("Cframe", "Tab 2", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("Cframe", "Reservar", nullptr));
+        label_14->setText(QApplication::translate("Cframe", "Reservas Actuales", nullptr));
+        pushButton->setText(QApplication::translate("Cframe", "Cargar Reservas", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("Cframe", "Reservas Actuales", nullptr));
     } // retranslateUi
 
 };

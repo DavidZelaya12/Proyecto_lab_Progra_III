@@ -24,11 +24,47 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Reglamentos</string>
+     </attribute>
+     <widget class="QLabel" name="label_13">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>911</width>
+        <height>441</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Este espacio virtual se utilizará para la reservación de Laboratorios de la Facultad de Ingeniería. 
+
+Requisitos: 
+ Solicitar el Laboratorios con 2 días de anticipación.
+ Haber cursado las clases que involucren los equipos  presentes en el laboratorio.
+Realizar la Solicitud entre 8:00 a.m. a 5:00 p.m
+
+Reglamentos: 
+ Mantener el orden y la limpieza del laboratorio solicitado para evitar amonestaciones verbales o escritas ( comité de ética).
+ No ingresar comidas ni bebidas a los laboratorio de lo contrario se remitirán al comité de ética,
+No modificar, Ajustar o Cambiar cualquier parte de la máquina sin autorizacion y supervisión de las personas encargados del laboratorio. 
+Utilizar la vestimenta correcta: 
+Zapatos Cerrados (De preferencia con punta de seguridad o cubos). 
+Ropa no holgada o muy suelta. ( De preferencia jeans y camisas)
+Pelo recogido . 
+
+Notas: 
+ 
+Una vez enviado el formulario debe esperar la confirmación de aprobación de uso del laboratorio solicitado de lo contrario no puede hacer uso del laboratorio. Cualquier pregunta o problema con su reservación puede enviar un correo a : winder.matamoros@unitec.edu.hn</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
-      <string>Tab 1</string>
+      <string>Reservar</string>
      </attribute>
      <widget class="QLabel" name="label">
       <property name="geometry">
@@ -162,6 +198,13 @@
         <height>25</height>
        </rect>
       </property>
+      <property name="minimumDate">
+       <date>
+        <year>2023</year>
+        <month>11</month>
+        <day>14</day>
+       </date>
+      </property>
      </widget>
      <widget class="QLabel" name="label_2">
       <property name="geometry">
@@ -223,6 +266,9 @@
       </property>
       <property name="text">
        <string>Alumno</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QRadioButton" name="educacion">
@@ -361,6 +407,12 @@
         <width>46</width>
         <height>25</height>
        </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>35</number>
       </property>
      </widget>
      <widget class="QLabel" name="label_8">
@@ -551,16 +603,6 @@
        <string>Reservar</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="mostrar">
-      <property name="geometry">
-       <rect>
-        <x>630</x>
-        <y>290</y>
-        <width>411</width>
-        <height>211</height>
-       </rect>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="motivo">
       <property name="geometry">
        <rect>
@@ -605,10 +647,49 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="tab_3">
      <attribute name="title">
-      <string>Tab 2</string>
+      <string>Reservas Actuales</string>
      </attribute>
+     <widget class="QLabel" name="label_14">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>211</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reservas Actuales</string>
+      </property>
+     </widget>
+     <widget class="QTextEdit" name="mostrar2">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>60</y>
+        <width>1031</width>
+        <height>601</height>
+       </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>20</y>
+        <width>131</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cargar Reservas</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>

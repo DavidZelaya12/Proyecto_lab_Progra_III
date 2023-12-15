@@ -8,7 +8,7 @@ Cframe::Cframe(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::Cframe)
 {
-   cargarlista("DatosLaboratorios.xls");
+   // cargarlista("DatosLaboratorios.xls");
     ui->setupUi(this);
 }
 
@@ -47,14 +47,14 @@ void Cframe::on_reservar_clicked()
                                            integrantes,
                                            ui->cuentas->text().toStdString(),
                                            ui->herramientas->text().toStdString(),
-                                           "ui->dateEdit->date().toString().toStdString()",
+                                           ui->dateEdit->date().toString("d MMM yyyy").toStdString(),
                                            ui->hora_inicio->currentText().toStdString(),
                                            ui->hora_final->currentText().toStdString());
 
     if(validarFecha(nuevolab->getLabSolicitado(),
                     ui->hora_inicio->currentIndex(),
                     ui->hora_final->currentIndex(),
-                    "ui->dateEdit->date().toString().toStdString()")){
+                    ui->dateEdit->date().toString("d MMM yyyy").toStdString())){
         labs.InsertarAlFinal(nuevolab);
         labs.Guardar("DatosLaboratorios.xls");
     }
@@ -98,12 +98,12 @@ bool Cframe::validarFecha(string laboratorioo,int index1, int index2,string fech
 
 
 
-            if(index1 >= inicio && index1 <=final ){
+            if(index1 >= inicio && index1 <final ){
                 QMessageBox::information(nullptr, "Error", "Fecha ocupada");
                 return false;
             }
 
-            if(index2 >=final && index2<=final){
+            if(index2 >=final && index2<final){
                 QMessageBox::information(nullptr, "Error", "Fecha ocupada");
                 return false;
             }
@@ -128,23 +128,61 @@ bool Cframe::cargarlista(string Gracia)
                     >> horarioInicio >> horarioFin;
             if (!Archivo.eof()) {
                 l = new laboratorio(labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion,
-                                                 nombreCompleto, numeroDeCuenta, correo, cantIntegrantes,
-                                                 nombresYNumerosExtra, equipo, fecha, horarioInicio, horarioFin);
-            labs.InsertarAlFinal(l);
+                                    nombreCompleto, numeroDeCuenta, correo, cantIntegrantes,
+                                    nombresYNumerosExtra, equipo, fecha, horarioInicio, horarioFin);
+                labs.InsertarAlFinal(l);
 
             }
-            QMessageBox::information(nullptr, "Error", "Yo Creo que este for no se está eejecutando");
+            QMessageBox::information(nullptr, "Error", "For infinito jijiji");
 
         }while(!Archivo.eof());
     }
     Archivo.close();
     return true;
-
 }
 
 
 void Cframe::on_tipolaboratorio_currentIndexChanged(const QString &arg1)
 {
+
+
+}
+
+string Cframe::mostrarlabs()
+{
+    string hola;
+    for (raizPtr = labs.raizPtr;raizPtr != nullptr;raizPtr= raizPtr->SigPtr ) {
+        hola+= raizPtr->getDato()->getReserva()+"\n";
+    }
+
+    return hola;
+
+}
+
+
+void Cframe::on_tabWidget_currentChanged(int index)
+{
+
+  //      ui->mostrar->setText(QString::fromStdString(mostrarlabs()));
+
+
+}
+
+
+void Cframe::on_tabWidget_tabBarClicked(int index)
+{
+
+
+}
+
+
+void Cframe::on_pushButton_clicked()
+{
+
+        ui->mostrar2->setText(QString::fromStdString(mostrarlabs()));
+
+
+
 
 }
 

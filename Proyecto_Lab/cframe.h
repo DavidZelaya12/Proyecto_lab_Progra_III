@@ -23,6 +23,12 @@ private slots:
 
     void on_tipolaboratorio_currentIndexChanged(const QString &arg1);
 
+    void on_tabWidget_currentChanged(int index);
+
+    void on_tabWidget_tabBarClicked(int index);
+
+    void on_pushButton_clicked();
+
 private:
 
     string labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion, nombreCompleto, numeroDeCuenta, correo;
@@ -34,6 +40,7 @@ private:
     lista <laboratorio*> labs;
     nodo<laboratorio*> *raizPtr;
 
+    string mostrarlabs();
     int indexActual(string posicion);
     bool validarFecha(string laboratorioo,int startindex, int endindex,string fecha);
     bool cargarlista(string Gracia);
