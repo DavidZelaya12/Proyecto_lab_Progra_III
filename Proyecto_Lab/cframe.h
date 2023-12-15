@@ -29,6 +29,14 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_docente_clicked();
+
+    void on_educacion_clicked();
+
+    void on_administrativo_clicked();
+
+    void on_alumno_clicked();
+
 private:
 
     string labSolicitado, claseRequerida, motivoDeUso, perfil, repeticion, nombreCompleto, numeroDeCuenta, correo;

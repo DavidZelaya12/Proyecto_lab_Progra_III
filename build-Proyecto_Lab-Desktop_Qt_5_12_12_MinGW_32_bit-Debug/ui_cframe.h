@@ -147,6 +147,7 @@ public:
         comboBox = new QComboBox(tab);
         comboBox->addItem(QString());
         comboBox->addItem(QString());
+        comboBox->addItem(QString());
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         comboBox->setGeometry(QRect(10, 250, 281, 24));
         label_4 = new QLabel(tab);
@@ -312,8 +313,9 @@ public:
         alumno->setText(QApplication::translate("Cframe", "Alumno", nullptr));
         educacion->setText(QApplication::translate("Cframe", "Educacion continua", nullptr));
         administrativo->setText(QApplication::translate("Cframe", "Administrativo", nullptr));
-        comboBox->setItemText(0, QApplication::translate("Cframe", "Diariamente", nullptr));
-        comboBox->setItemText(1, QApplication::translate("Cframe", "Semanalmente", nullptr));
+        comboBox->setItemText(0, QApplication::translate("Cframe", "Nunca", nullptr));
+        comboBox->setItemText(1, QApplication::translate("Cframe", "Diariamente", nullptr));
+        comboBox->setItemText(2, QApplication::translate("Cframe", "Semanalmente", nullptr));
 
         label_4->setText(QApplication::translate("Cframe", "Repetir reservacion", nullptr));
         label_5->setText(QApplication::translate("Cframe", "Nombre completo", nullptr));

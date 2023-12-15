@@ -308,6 +308,11 @@ Una vez enviado el formulario debe esperar la confirmación de aprobación de us
       </property>
       <item>
        <property name="text">
+        <string>Nunca</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
         <string>Diariamente</string>
        </property>
       </item>

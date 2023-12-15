@@ -56,6 +56,7 @@ void Cframe::on_reservar_clicked()
                     ui->hora_final->currentIndex(),
                     ui->dateEdit->date().toString("d MMM yyyy").toStdString())){
         labs.InsertarAlFinal(nuevolab);
+        QMessageBox::information(nullptr, "Exito reservando", "Laboratorio reservado exitosamente!");
         labs.Guardar("DatosLaboratorios.xls");
     }
 
@@ -63,9 +64,9 @@ void Cframe::on_reservar_clicked()
 
 int Cframe::indexActual(string posicion)
 {
-    string horas[] = {"06 : 45", "08 : 10", "09 : 55", "11 : 15", "13 : 20", "14 : 40", "16 : 00", "17 : 20", "18 : 40"};
+    string horas[] = {"06 : 45", "08 : 10", "09 : 55", "11 : 15", "13 : 20", "14 : 40", "16 : 00", "17 : 20", "18 : 40", "20 : 00","21 :00"};
 
-    for (int i=0; i < 10 ;i++) {
+    for (int i=0; i < 11 ;i++) {
         if(posicion == horas[i] ){
             return i;
         }
@@ -79,7 +80,6 @@ bool Cframe::validarFecha(string laboratorioo,int index1, int index2,string fech
 
     int currentindex1 = ui->hora_inicio->currentIndex();
     int currentindex2 = ui->hora_final->currentIndex();
-
     if(currentindex1>currentindex2){
         QMessageBox::information(nullptr, "Error", "Ingrese una fecha valida");
         return false;
@@ -98,13 +98,13 @@ bool Cframe::validarFecha(string laboratorioo,int index1, int index2,string fech
 
 
 
-            if(index1 >= inicio && index1 <final ){
-                QMessageBox::information(nullptr, "Error", "Fecha ocupada");
+            if(index1 >= inicio && index1<final ){
+                QMessageBox::information(nullptr, "Error", "El laboratorio se encuentra ocupado");
                 return false;
             }
 
             if(index2 >=final && index2<final){
-                QMessageBox::information(nullptr, "Error", "Fecha ocupada");
+                QMessageBox::information(nullptr, "Error", "El labortorio se encuentra ocupado");
                 return false;
             }
         }
@@ -184,5 +184,29 @@ void Cframe::on_pushButton_clicked()
 
 
 
+}
+
+
+void Cframe::on_docente_clicked()
+{
+    ui->comboBox->setDisabled(false);
+}
+
+
+void Cframe::on_educacion_clicked()
+{
+    ui->comboBox->setDisabled(false);
+}
+
+
+void Cframe::on_administrativo_clicked()
+{
+    ui->comboBox->setDisabled(false);
+}
+
+
+void Cframe::on_alumno_clicked()
+{
+    ui->comboBox->setDisabled(true);
 }
 

@@ -72,7 +72,7 @@ string laboratorio::getHorarioFin()
 
 string laboratorio::getReserva()
 {
-    return labSolicitado+" "+horarioInicio+"-"+horarioFin;
+    return labSolicitado+" - "+horarioInicio+"-"+horarioFin+" - "+fecha;
 }
 
 
